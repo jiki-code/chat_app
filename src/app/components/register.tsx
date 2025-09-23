@@ -8,7 +8,7 @@ import {
   updateProfile,
   sendEmailVerification,
 } from "firebase/auth";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function RegisterComponent() {
   const [loading, setLoading] = useState(false);
@@ -36,8 +36,9 @@ export default function RegisterComponent() {
         await sendEmailVerification(cred.user);
       } catch { /* optional */ }
 
-    } catch (err: any) {
-      setErrorMsg("Đăng ký thất bại. Vui lòng thử lại.");
+     } catch (err: unknown) {
+       const errorMessage = err instanceof Error ? err.message : "Unknown error";
+      setErrorMsg(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -47,7 +48,7 @@ export default function RegisterComponent() {
     <main className="mx-auto max-w-sm p-6 border rounded-lg mt-10">
       <h1 className="text-2xl font-semibold mb-4">Tạo tài khoản</h1>
 
-      <form onSubmit={onSubmit} className="space-y-4">
+      <form onSubmit={onSubmit} className="space-y-4 w-80">
         <div>
           <label className="block text-sm mb-1">Họ tên</label>
           <input name="name" type="text" className="w-full border rounded px-3 py-2" />
@@ -75,7 +76,7 @@ export default function RegisterComponent() {
       </form>
 
       <p className="text-sm mt-4">
-        Đã có tài khoản? <a className="underline" href="/">Đăng nhập</a>
+        Đã có tài khoản? <Link className="underline" href="/">Đăng nhập</Link>
       </p>
     </main>
   );

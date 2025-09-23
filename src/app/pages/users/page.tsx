@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 // Nếu bạn bật xác thực admin bằng ID token, import auth client để lấy token:
 import { auth } from "../../../../firebase.config";
-import dynamic from 'next/dynamic'
 type Row = {
   uid: string;
   email: string | null;
@@ -26,6 +25,7 @@ export default function AdminUsersPage() {
 
   async function load(token?: string | null) {
     setLoading(true);
+    console.log("Loading users...", { loading });
 
     // Nếu bạn bật bảo vệ bằng ID token, thêm headers Authorization:
     // const idToken = await auth.currentUser?.getIdToken();
@@ -52,7 +52,7 @@ export default function AdminUsersPage() {
     <main className="p-6 max-w-5xl mx-auto">
       <h1 className="text-2xl font-semibold mb-4">Users đã đăng ký</h1>
 
-      {
+      { loading ? <p>Đang tải...</p> : rows.length === 0 ? <p>Chưa có user nào.</p> :
         <>
           <div className="overflow-x-auto border rounded-lg">
             <table className="min-w-full text-sm">

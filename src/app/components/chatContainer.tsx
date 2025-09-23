@@ -18,8 +18,8 @@ const ChatContainer = () => {
   const [messages, setMessages] = React.useState<messageType[]>([]);
 
   React.useEffect(() => {
-    let q = query(collection(db, "messages"), orderBy("time", "asc"));
-    let unsubscribe = onSnapshot(q, (snapshot) => {
+    const q = query(collection(db, "messages"), orderBy("time", "asc"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
       const msgs = snapshot.docs.map((doc) => {
         return {
           id: doc.id,
