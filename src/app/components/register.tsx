@@ -36,8 +36,9 @@ export default function RegisterComponent() {
         await sendEmailVerification(cred.user);
       } catch { /* optional */ }
 
-    } catch (err: any) {
-      setErrorMsg("Đăng ký thất bại. Vui lòng thử lại.");
+     } catch (err: unknown) {
+       const errorMessage = err instanceof Error ? err.message : "Unknown error";
+      setErrorMsg(errorMessage);
     } finally {
       setLoading(false);
     }
