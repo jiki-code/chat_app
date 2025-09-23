@@ -8,7 +8,7 @@ import {
   updateProfile,
   sendEmailVerification,
 } from "firebase/auth";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function RegisterComponent() {
   const [loading, setLoading] = useState(false);
@@ -75,7 +75,7 @@ export default function RegisterComponent() {
       </form>
 
       <p className="text-sm mt-4">
-        Đã có tài khoản? <a className="underline" href="/">Đăng nhập</a>
+        Đã có tài khoản? <Link className="underline" href="/">Đăng nhập</Link>
       </p>
     </main>
   );
