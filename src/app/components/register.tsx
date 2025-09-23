@@ -47,7 +47,7 @@ export default function RegisterComponent() {
     <main className="mx-auto max-w-sm p-6 border rounded-lg mt-10">
       <h1 className="text-2xl font-semibold mb-4">Tạo tài khoản</h1>
 
-      <form onSubmit={onSubmit} className="space-y-4">
+      <form onSubmit={onSubmit} className="space-y-4 w-80">
         <div>
           <label className="block text-sm mb-1">Họ tên</label>
           <input name="name" type="text" className="w-full border rounded px-3 py-2" />

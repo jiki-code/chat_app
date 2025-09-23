@@ -51,13 +51,13 @@ const Login = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full gap-4">
       <button
-        className="rounded-full bg-white text-black border px-3 py-2 cursor-pointer"
+        className="rounded-full bg-white text-red-400 border px-3 py-2 cursor-pointer"
         onClick={handleSignIn}
       >
         Login with Google +
       </button>
       <button
-        className="rounded-full bg-white text-black border px-3 py-2 cursor-pointer"
+        className="rounded-full bg-white text-red-400 border px-3 py-2 cursor-pointer"
         onClick={() => {
           setIsLoginWithEmail(true);
           setIsRegister(false);
@@ -66,7 +66,7 @@ const Login = () => {
         Login with Email / Password
       </button>
         <button
-        className="rounded-full bg-white text-black border px-3 py-2 cursor-pointer"
+        className="rounded-full bg-white text-red-400 border px-3 py-2 cursor-pointer"
         onClick={() => { setIsRegister(true); setIsLoginWithEmail(false); }}
       >
         Register
@@ -75,21 +75,23 @@ const Login = () => {
       {isLoginWithEmail && (
         <form
           action=""
-          className="flex flex-col gap-2 border rounded-xl p-4 h-64 w-80 justify-center"
-          onSubmit={(e) => {
+          className="flex flex-col gap-4 border rounded-xl p-4 h-72 w-86 justify-center"
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
-            const email = e?.target[0].value;
-            const password = e?.target[1].value;
+            const form = e.currentTarget;
+            const email = (form.elements.namedItem("email") as HTMLInputElement)?.value;
+            const password = (form.elements.namedItem("password") as HTMLInputElement)?.value;
             handleSignInWithEmail(email, password);
           }}
         >
-          <h2 className="text-center text-2xl font-bold">Login</h2>
+          <h2 className="text-center text-2xl font-bold">Đăng nhập</h2>
           <span className="text-center text-sm text-gray-500">
-            (test account: email@example.com / password)
+            (tài khoản thử nghiệm: email@example.com / password)
           </span> 
           <input
             className="border p-2"
             type="email"
+            name="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -97,6 +99,7 @@ const Login = () => {
           <input
             className="border p-2"
             type="password"
+            name="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
