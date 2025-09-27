@@ -28,7 +28,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header className="p-4 text-center w-full border-b border-b-zinc-200 bg-blue-500 text-white">
-          <p className="font-bold text-base uppercase">Chat Bot</p>
+          <h1 className="font-bold text-base uppercase">Chat Bot</h1>
         </header>
         {children}
       </body>

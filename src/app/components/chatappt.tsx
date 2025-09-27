@@ -35,7 +35,7 @@ const ChatApp = ({ user }: ChatAppProps) => {
   };
   return (
     <div className="flex flex-col gap-3 mx-auto max-w-7xl items-center p-4">
-      <h1 className="text-2xl font-bold mb-4">Welcome to the Chat App!</h1>
+      <h2 className="text-2xl font-bold mb-4">Welcome to the Chat App!</h2>
 
       <ChatContainer />
       <div className="w-[400px] border border-black flex items-center gap-2">
