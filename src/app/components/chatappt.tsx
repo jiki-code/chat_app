@@ -4,15 +4,20 @@ import { auth, db } from "../../../firebase.config";
 import ChatContainer from "./chatContainer";
 import { User } from "firebase/auth";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import EmojiButton  from "./emojiPicker";
 import Link from "next/link";
 type ChatAppProps = {
   user: User;
+  handleLogout?: (user: User | null) => void;
 };
-const ChatApp = ({ user }: ChatAppProps) => {
+const ChatApp = ({ user, handleLogout}: ChatAppProps) => {
   const [textValue, setTextValue] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
   const handleSignOut = async () => {
+    if (!user) return;
     await auth.signOut();
+    handleLogout && handleLogout(user);
+
   };
   const handleSend = async () => {
     if (!textValue) return;
@@ -38,7 +43,7 @@ const ChatApp = ({ user }: ChatAppProps) => {
       <h2 className="text-2xl font-bold mb-4">Welcome to the Chat App!</h2>
 
       <ChatContainer />
-      <div className="w-[400px] border border-black flex items-center gap-2">
+      <div className="w-[400px] border border-black flex items-center">
         <input
           type="text"
           placeholder="Type your message here..."
@@ -52,6 +57,7 @@ const ChatApp = ({ user }: ChatAppProps) => {
             }
           }}
         />
+        <EmojiButton onEmojiClick={(emoji: string) => setTextValue((prev) => prev + emoji)} />
         <button
           className="bg-green-500 text-white px-4 py-2 cursor-pointer :disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={handleSend}

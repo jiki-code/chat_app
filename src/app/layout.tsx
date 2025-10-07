@@ -24,13 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+     <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
       >
-        <header className="p-4 text-center w-full border-b border-b-zinc-200 bg-blue-500 text-white">
-          <h1 className="font-bold text-base uppercase">Chat Bot</h1>
+        <div className="min-h-screen flex flex-col ">
+        <header className="h-24 flex items-center justify-center text-center w-full border-b border-b-zinc-200 bg-blue-500 text-white">
+          <h1 className="font-bold text-2xl uppercase">Chat Bot</h1>
         </header>
         {children}
+        </div>
       </body>
     </html>
   );

@@ -46,11 +46,11 @@ export default function RegisterComponent() {
 
   return (
     <main className="mx-auto max-w-sm p-6 border rounded-lg mt-10">
-      <h1 className="text-2xl font-semibold mb-4">Tạo tài khoản</h1>
+      <h1 className="text-2xl font-semibold mb-4 text-center">Add new user</h1>
 
       <form onSubmit={onSubmit} className="space-y-4 w-80">
         <div>
-          <label className="block text-sm mb-1">Họ tên</label>
+          <label className="block text-sm mb-1">Full Name</label>
           <input name="name" type="text" className="w-full border rounded px-3 py-2" />
         </div>
 
@@ -60,7 +60,7 @@ export default function RegisterComponent() {
         </div>
 
         <div>
-          <label className="block text-sm mb-1">Mật khẩu</label>
+          <label className="block text-sm mb-1">Password</label>
           <input name="password" type="password" required minLength={6} className="w-full border rounded px-3 py-2" />
         </div>
 
@@ -68,16 +68,13 @@ export default function RegisterComponent() {
 
         <button
           disabled={loading}
-          className="w-full rounded bg-blue-500 text-white py-2 disabled:opacity-60"
+          className="bg-blue-500 text-white rounded-full px-4 py-2 cursor-pointer w-full"
           type="submit"
         >
-          {loading ? "Đang tạo..." : "Đăng ký"}
+          {loading ? "Registering..." : "Register"}
         </button>
       </form>
 
-      <p className="text-sm mt-4">
-        Đã có tài khoản? <Link className="underline" href="/">Đăng nhập</Link>
-      </p>
     </main>
   );
 }

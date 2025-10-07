@@ -39,7 +39,7 @@ const ChatContainer = () => {
     }
   }, [messages]);
   return (
-    <div className="border w-full h-[600px] overflow-y-scroll p-3 rounded-3xl">
+    <div className="border w-full h-[600px] overflow-y-scroll p-3 rounded-md">
       {messages.map((msg) => (
         <Message key={msg.id} msg={msg} />
       ))}

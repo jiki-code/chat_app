@@ -73,9 +73,10 @@ const Login = () => {
       </button>
       {isRegister && <RegisterComponent />}
       {isLoginWithEmail && (
+        <div className="mx-auto max-w-sm p-2 border rounded-lg mt-10">
         <form
           action=""
-          className="flex flex-col gap-4 border rounded-xl p-4 h-72 w-86 justify-center"
+          className="flex flex-col gap-6 rounded-xl p-4 h-80 w-86 justify-center"
           onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
             const form = e.currentTarget;
@@ -84,12 +85,12 @@ const Login = () => {
             handleSignInWithEmail(email, password);
           }}
         >
-          <h2 className="text-center text-2xl font-bold">Đăng nhập</h2>
+          <h2 className="text-center text-2xl font-bold">Sign In</h2>
           <span className="text-center text-sm text-gray-500">
-            (tài khoản thử nghiệm: email@example.com / password)
+            (example: email@example.com / password)
           </span> 
           <input
-            className="border p-2"
+           className="w-full border rounded px-3 py-2"
             type="email"
             name="email"
             placeholder="Email"
@@ -97,7 +98,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            className="border p-2"
+           className="w-full border rounded px-3 py-2"
             type="password"
             name="password"
             placeholder="Password"
@@ -111,6 +112,7 @@ const Login = () => {
             Login
           </button>
         </form>
+        </div>
       )}
     </div>
   );

@@ -17,9 +17,13 @@ export default function Home() {
     });
     return () => unsubscribe();
   }, []);
+
+  const handleLogout = (user: User | null) => {
+    setUser(null)
+  }
   return (
     <div className="pt-2">
-     {user ? <ChatApp user={user} /> : <Login/> }
+     {user ? <ChatApp user={user} handleLogout={handleLogout} /> : <Login/> }
     </div>
   );
 }
